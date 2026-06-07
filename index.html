@@ -6,107 +6,156 @@
 <title>Joshua Gutierrez — Portfolio</title>
 <style>
   :root {
-    --ink:    #16182a;
-    --muted:  #454c66;
-    --soft:   #6b7390;
-    --cyan:   #0891b2;
-    --violet: #7c3aed;
-    --fuchsia:#db2777;
-    --page:   #fbfbfe;
-    --line:   #e6e8f2;
+    --bg:     #f3ede3;   /* warm cream backdrop */
+    --card:   #ffffff;   /* card surface */
+    --ink:    #1c1917;   /* near-black warm text */
+    --muted:  #57534e;   /* warm gray body */
+    --soft:   #8a8278;   /* lighter meta */
+    --amber:  #f59e0b;   /* primary accent */
+    --gold:   #d97706;   /* deeper accent */
+    --deep:   #b45309;   /* darkest accent */
+    --line:   #eadfce;   /* warm hairlines */
+    --chip:   #fbf4e6;   /* tag background */
+    --chip-b: #f1e3c9;   /* tag border */
   }
 
   * { box-sizing: border-box; }
 
   html, body {
     margin: 0; padding: 0;
-    background: #eceef6;
+    background:
+      radial-gradient(1100px 520px at 78% -8%, rgba(245,158,11,0.14), transparent 60%),
+      radial-gradient(900px 480px at -5% 4%, rgba(180,83,9,0.08), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
     color: var(--ink);
     font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
     font-size: 14.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
 
-  .page {
-    max-width: 880px;
-    margin: 36px auto;
-    background: var(--page);
-    padding: 52px 60px 60px;
-    border-radius: 2px;
-    box-shadow: 0 18px 48px rgba(22,24,42,0.14);
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 40px 26px 64px; }
+
+  /* ── Hero ── */
+  .hero {
     position: relative;
+    background: linear-gradient(160deg, #ffffff 0%, #fffaf1 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 40px 44px 34px;
+    box-shadow: 0 22px 60px rgba(120,72,10,0.12);
     overflow: hidden;
   }
-  .page::before {
+  .hero::before {
     content: "";
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 6px;
-    background: linear-gradient(180deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+    position: absolute; top: 0; left: 0; right: 0; height: 5px;
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 45%, #b45309 100%);
   }
-
-  /* ── Header ── */
-  header { margin-bottom: 18px; }
+  .hero::after {
+    content: "";
+    position: absolute; right: -90px; top: -90px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(245,158,11,0.18), transparent 68%);
+    pointer-events: none;
+  }
   .name {
-    font-size: 34px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
     margin: 0;
-    color: var(--ink);
+    line-height: 1.05;
+    background: linear-gradient(92deg, #b45309 0%, #d97706 40%, #f59e0b 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: var(--deep);
   }
   .tagline {
-    margin: 5px 0 0;
-    font-size: 13px;
-    letter-spacing: 3px;
+    margin: 9px 0 0;
+    font-size: 12.5px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
-    font-weight: 700;
-    color: #6d28d9;
+    font-weight: 800;
+    color: var(--gold);
   }
   .contact {
-    margin-top: 13px;
-    font-size: 14px;
+    margin-top: 16px;
+    font-size: 13.5px;
     color: var(--muted);
+    display: flex; flex-wrap: wrap; align-items: center;
   }
-  .contact a { color: var(--muted); text-decoration: none; }
-  .contact a:hover { color: var(--violet); }
-  .contact .dot { color: var(--violet); margin: 0 8px; }
-
+  .contact a { color: var(--muted); text-decoration: none; transition: color .15s ease; }
+  .contact a:hover { color: var(--deep); }
+  .contact .dot { color: var(--amber); margin: 0 9px; }
   .intro {
-    margin: 14px 0 0;
+    margin: 20px 0 0;
     color: var(--muted);
     border-top: 1px solid var(--line);
-    padding-top: 14px;
+    padding-top: 18px;
+    font-size: 15px;
+    max-width: 72ch;
   }
+  .intro strong { color: var(--ink); }
 
   /* ── Sections ── */
-  section { margin-top: 18px; }
+  section { margin-top: 38px; }
   h2 {
-    font-size: 14px;
-    letter-spacing: 2px;
+    font-size: 13px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--deep);
     margin: 0 0 4px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid;
-    border-image: linear-gradient(90deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%) 1;
-    display: flex;
-    align-items: center;
+    display: flex; align-items: center;
   }
   h2::before {
     content: "";
     display: inline-block;
-    width: 9px; height: 9px;
-    background: var(--cyan);
-    margin-right: 9px;
+    width: 10px; height: 10px;
+    background: linear-gradient(135deg, #fbbf24, #d97706);
+    margin-right: 11px;
     transform: rotate(45deg);
+    border-radius: 2px;
     flex: 0 0 auto;
   }
-  .section-note { color: var(--soft); font-style: italic; font-size: 13px; margin: 0 0 6px; }
+  h2::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 2px;
+    margin-left: 14px;
+    background: linear-gradient(90deg, rgba(217,119,6,0.55), rgba(217,119,6,0));
+    border-radius: 2px;
+  }
+  .lead-section h2 { font-size: 14px; }
+  .section-note { color: var(--soft); font-style: italic; font-size: 13px; margin: 6px 0 0; }
 
-  /* ── Projects ── */
-  .project { padding: 9px 0; border-bottom: 1px solid var(--line); }
-  .project:last-child { border-bottom: 0; }
+  /* ── Project grid ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+    align-items: start;
+  }
+  .project {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 18px 20px 16px;
+    box-shadow: 0 6px 18px rgba(120,72,10,0.06);
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    position: relative;
+  }
+  .project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 34px rgba(180,83,9,0.16);
+    border-color: #f1d49b;
+  }
+  /* featured (SEO lead) cards get a warm wash + gold edge */
+  .project.feature {
+    background: linear-gradient(165deg, #ffffff 0%, #fff6e8 100%);
+    border-color: #f1d49b;
+    box-shadow: 0 10px 26px rgba(180,83,9,0.12);
+  }
   .proj-head {
     display: flex;
     justify-content: space-between;
@@ -117,222 +166,278 @@
   .proj-name {
     font-weight: 800;
     font-size: 16.5px;
-    color: #0e7490;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
-  .proj-name a { color: #0e7490; text-decoration: none; }
-  .proj-meta { font-size: 12.5px; color: var(--soft); white-space: nowrap; }
-  .proj-meta a { color: var(--cyan); text-decoration: none; }
+  .proj-meta { font-size: 12px; color: var(--soft); }
+  .proj-meta a { color: var(--gold); text-decoration: none; }
+  .proj-meta a:hover { color: var(--deep); }
 
-  .proj-desc { color: var(--muted); margin: 3px 0 5px; }
+  .proj-desc { color: var(--muted); margin: 7px 0 6px; }
   .proj-desc strong { color: var(--ink); }
 
-  ul { margin: 4px 0 0; padding-left: 0; list-style: none; }
+  ul { margin: 6px 0 0; padding-left: 0; list-style: none; }
   ul li {
     position: relative;
-    padding-left: 16px;
-    margin-bottom: 3px;
+    padding-left: 17px;
+    margin-bottom: 4px;
     color: var(--muted);
   }
   ul li::before {
     content: "";
     position: absolute;
-    left: 0; top: 6px;
+    left: 0; top: 7px;
     width: 5px; height: 5px;
-    background: var(--cyan);
+    background: var(--amber);
     border-radius: 50%;
   }
+  ul li strong { color: var(--ink); }
 
-  .tags { margin-top: 5px; }
+  .tags { margin-top: 9px; }
   .tag {
     display: inline-block;
-    font-size: 13px;
-    color: #4a5270;
-    background: #f1f2f8;
-    border: 1px solid #e2e5f0;
-    border-radius: 4px;
-    padding: 1px 6px;
-    margin: 0 4px 4px 0;
+    font-size: 12px;
+    color: var(--deep);
+    background: var(--chip);
+    border: 1px solid var(--chip-b);
+    border-radius: 999px;
+    padding: 2px 9px;
+    margin: 0 5px 5px 0;
+    font-weight: 600;
   }
 
   .badge {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 999px;
     vertical-align: middle;
   }
   .badge.live     { color: #0e7a55; background: #e3f6ee; }
-  .badge.prod     { color: #0e7490; background: #e2f4f8; }
-  .badge.research { color: #6d28d9; background: #efeafe; }
+  .badge.prod     { color: #b45309; background: #fbf0d9; }
+  .badge.research { color: #92400e; background: #f7ecd6; }
   .badge.demo     { color: #be185d; background: #fce7f1; }
-  .badge.wip      { color: #475069; background: #eef0f6; }
+  .badge.wip      { color: #6b5a3a; background: #f3ecdd; }
 
   .edu-row { color: var(--muted); margin-bottom: 4px; }
   .edu-row strong { color: var(--ink); }
 
+  /* full-width card inside grid */
+  .full { grid-column: 1 / -1; }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--soft);
+    font-size: 12.5px;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px 26px; }
+    .name { font-size: 34px; }
+    .proj-head { flex-direction: column; gap: 3px; }
+  }
+
   @media print {
     html, body { background: #fff; }
-    .page { box-shadow: none; margin: 0; max-width: none; padding: 22px 34px; border-radius: 0; }
-    @page { margin: 9mm; }
+    .wrap { max-width: none; padding: 0; }
+    .hero { box-shadow: none; border-radius: 0; padding: 14px 20px 16px; }
+    .hero::after { display: none; }
+    .grid { gap: 9px; }
+    .project { box-shadow: none; break-inside: avoid; padding: 10px 12px; }
+    .project.feature { box-shadow: none; }
+    .project:hover { transform: none; box-shadow: none; }
+    section { margin-top: 16px; }
     h2 { break-after: avoid; }
-    .project { break-inside: avoid; }
     .proj-head { break-after: avoid; }
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    @page { margin: 9mm; }
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
-  @media (max-width: 700px) {
-    .page { padding: 36px 24px 44px; margin: 0; }
-    .name { font-size: 27px; }
-    .proj-head { flex-direction: column; gap: 2px; }
-  }
 </style>
 </head>
 <body>
-  <main class="page">
+  <main class="wrap">
 
-    <!-- ── Header ── -->
-    <header>
+    <!-- ── Hero ── -->
+    <header class="hero">
       <h1 class="name">Joshua Gutierrez</h1>
-      <p class="tagline">Portfolio &middot; Product, Engineering &amp; Applied Research</p>
+      <p class="tagline">Portfolio &middot; SEO &amp; Web Performance &middot; Product Engineering &amp; Applied Research</p>
       <p class="contact">
         Las Cruces, NM
         <span class="dot">&bull;</span>
-        <a href="mailto:jgutierrez@axiondeep.com">jgutierrez@axiondeep.com</a>
+        <a href="mailto:jgutierrez@axiondeepdigital.com">jgutierrez@axiondeepdigital.com</a>
         <span class="dot">&bull;</span>
-        <a href="https://axiondeep.com">axiondeep.com</a>
+        <a href="https://axiondeepdigital.com">axiondeepdigital.com</a>
         <span class="dot">&bull;</span>
         <a href="https://linkedin.com/in/joshua-gutierrez-b198117a">linkedin.com/in/joshua-gutierrez-b198117a</a>
         <span class="dot">&bull;</span>
         <a href="https://github.com/joshuarg007">github.com/joshuarg007</a>
       </p>
-      <p class="intro">Founder of <strong>Axion Deep Labs</strong>, an independent software studio. I design, build, ship, and operate products end to end: production SaaS, AI and agentic systems, developer tooling, and applied ML research. The work below spans live commercial products, in-house platforms, and a research track in continual learning and model topology. Everything is built and maintained solo or as the technical lead, across the full stack and the full lifecycle.</p>
+      <p class="intro">Founder of <strong>Axion Deep Digital</strong> (SEO &amp; web agency) and <strong>Axion Deep Labs</strong> (independent software studio). I lead SEO and web-performance work end to end &mdash; technical SEO, content strategy, Core Web Vitals, and the tooling behind it &mdash; and I design, build, ship, and operate the products that support it: production SaaS, AI and agentic systems, developer tooling, and applied ML research. The work below leads with SEO and web performance, then spans live commercial products, in-house platforms, and a research track in continual learning and model topology. Everything is built and maintained solo or as the technical lead, across the full stack and the full lifecycle.</p>
     </header>
+
+    <!-- ── SEO & Web Performance (lead) ── -->
+    <section class="lead-section">
+      <h2>SEO &amp; Web Performance</h2>
+      <p class="section-note">Technical SEO, content strategy, Core Web Vitals, and the audit tooling and research behind the work.</p>
+      <div class="grid">
+
+        <div class="project feature full">
+          <div class="proj-head">
+            <div class="proj-name">DeepAudit AI <span class="badge live">Live</span></div>
+            <div class="proj-meta"><a href="https://axiondeepdigital.com/free-seo-audit">axiondeepdigital.com/free-seo-audit</a></div>
+          </div>
+          <div class="proj-desc">Browser-rendering SEO &amp; website audit platform: <strong>60+ checks across 9 categories</strong> (technical, content, on-page, schema, security, performance, accessibility, AI-readiness, local SEO).</div>
+          <ul>
+            <li>Renders pages the way Googlebot does (AWS Lambda + Node.js 20 + Puppeteer/Chromium) rather than parsing static HTML, surfacing issues source-only tools miss</li>
+            <li>Integrates PageSpeed Insights/Lighthouse, the W3C validator, Mozilla Observatory, and SERP data into a single prioritized, exportable report</li>
+            <li>Ecosystem: a companion GPT on the OpenAI store and a published Zapier integration</li>
+          </ul>
+          <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">Node.js</span><span class="tag">Puppeteer</span><span class="tag">DynamoDB</span><span class="tag">LLM APIs</span><span class="tag">SAM / IaC</span></div>
+        </div>
+
+        <div class="project feature">
+          <div class="proj-head">
+            <div class="proj-name">Axion Deep Digital <span class="badge live">Live</span></div>
+            <div class="proj-meta">SEO &amp; web agency &middot; <a href="https://axiondeepdigital.com">axiondeepdigital.com</a></div>
+          </div>
+          <div class="proj-desc">SEO/web agency sites for Axion Deep Digital and parent studio Axion Deep Labs, built for performance and search: Next.js + TypeScript, static export, <strong>98+ Lighthouse</strong>, JSON-LD, full technical SEO.</div>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">SEO</span><span class="tag">Core Web Vitals</span><span class="tag">JSON-LD</span></div>
+        </div>
+
+        <div class="project feature">
+          <div class="proj-head">
+            <div class="proj-name">SEO Workbench <span class="badge prod">Built</span></div>
+            <div class="proj-meta">local-first SEO command center</div>
+          </div>
+          <div class="proj-desc">A local-first, multi-project SEO command center that encodes a full SEO process into one workstation tool, powered by free Google APIs, with no SaaS subscription or telemetry.</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Google APIs</span><span class="tag">Desktop</span><span class="tag">SEO</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">AI Crawler Diff <span class="badge research">Methodology</span></div>
+            <div class="proj-meta">content-divergence study</div>
+          </div>
+          <div class="proj-desc">Pre-registered methodology and dataset comparing what 8 request profiles (AI crawlers, Googlebot, normal browsers) receive from the same URLs: what changes, how often, and whether it matters.</div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Pre-registration</span><span class="tag">Crawling</span><span class="tag">Measurement</span></div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- ── Flagship Products ── -->
     <section>
       <h2>Flagship Products &mdash; Live SaaS</h2>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Made4Founders <span class="badge live">Live</span></div>
-          <div class="proj-meta"><a href="https://made4founders.com">made4founders.com</a></div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Made4Founders <span class="badge live">Live</span></div>
+            <div class="proj-meta"><a href="https://made4founders.com">made4founders.com</a></div>
+          </div>
+          <div class="proj-desc">All-in-one "command center for founders": a multi-tenant B2B platform spanning <strong>~20 modules</strong> (billing, cap table, data room, documents, hiring, investor updates, 8-platform social posting, encrypted vault, and more).</div>
+          <ul>
+            <li>Full stack: React + TypeScript + Vite frontend; FastAPI + SQLAlchemy + PostgreSQL (RDS) backend; S3 storage; Docker on AWS Lightsail with GitHub Actions CI/CD</li>
+            <li><strong>1,300+ automated tests</strong> gate every release; zero-downtime deploys, Sentry + UptimeRobot monitoring, smoke tests</li>
+            <li>Security: AES-256-GCM credential vault (Argon2id), TOTP + SMS MFA, server-side plan enforcement, IDOR-audited endpoints; integrations with Stripe, Plaid, QuickBooks/Xero, and 8 social APIs</li>
+          </ul>
+          <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Stripe</span><span class="tag">CI/CD</span></div>
         </div>
-        <div class="proj-desc">All-in-one "command center for founders": a multi-tenant B2B platform spanning <strong>~20 modules</strong> (billing, cap table, data room, documents, hiring, investor updates, 8-platform social posting, encrypted vault, and more).</div>
-        <ul>
-          <li>Full stack: React + TypeScript + Vite frontend; FastAPI + SQLAlchemy + PostgreSQL (RDS) backend; S3 storage; Docker on AWS Lightsail with GitHub Actions CI/CD</li>
-          <li><strong>1,300+ automated tests</strong> gate every release; zero-downtime deploys, Sentry + UptimeRobot monitoring, smoke tests</li>
-          <li>Security: AES-256-GCM credential vault (Argon2id), TOTP + SMS MFA, server-side plan enforcement, IDOR-audited endpoints; integrations with Stripe, Plaid, QuickBooks/Xero, and 8 social APIs</li>
-        </ul>
-        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Stripe</span><span class="tag">CI/CD</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Site2CRM <span class="badge live">Live</span></div>
-          <div class="proj-meta"><a href="https://site2crm.io">site2crm.io</a> &middot; <a href="https://api.site2crm.io/docs">API</a></div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Site2CRM <span class="badge live">Live</span></div>
+            <div class="proj-meta"><a href="https://site2crm.io">site2crm.io</a> &middot; <a href="https://api.site2crm.io/docs">API</a></div>
+          </div>
+          <div class="proj-desc">Lead-capture platform that turns website form submissions into CRM records instantly, with full UTM and referrer preservation. Shipped across <strong>three surfaces from one product</strong>.</div>
+          <ul>
+            <li>React 19 frontend + FastAPI backend on AWS (EC2, deploys via SSM); CloudFront edge; per-form embed widgets and a branded booking flow</li>
+            <li>CRM integrations: HubSpot, Salesforce, Pipedrive, Zoho, Nutshell; <strong>approved Zapier marketplace</strong> integration</li>
+            <li>Companion surfaces: native Wix app (Wix-native auth, dashboard hub) and a WordPress plugin, kept feature-consistent across all three</li>
+          </ul>
+          <div class="tags"><span class="tag">React 19</span><span class="tag">FastAPI</span><span class="tag">AWS</span><span class="tag">CloudFront</span><span class="tag">Wix</span><span class="tag">WordPress / PHP</span><span class="tag">Zapier</span></div>
         </div>
-        <div class="proj-desc">Lead-capture platform that turns website form submissions into CRM records instantly, with full UTM and referrer preservation. Shipped across <strong>three surfaces from one product</strong>.</div>
-        <ul>
-          <li>React 19 frontend + FastAPI backend on AWS (EC2, deploys via SSM); CloudFront edge; per-form embed widgets and a branded booking flow</li>
-          <li>CRM integrations: HubSpot, Salesforce, Pipedrive, Zoho, Nutshell; <strong>approved Zapier marketplace</strong> integration</li>
-          <li>Companion surfaces: native Wix app (Wix-native auth, dashboard hub) and a WordPress plugin, kept feature-consistent across all three</li>
-        </ul>
-        <div class="tags"><span class="tag">React 19</span><span class="tag">FastAPI</span><span class="tag">AWS</span><span class="tag">CloudFront</span><span class="tag">Wix</span><span class="tag">WordPress / PHP</span><span class="tag">Zapier</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">DeepAudit AI <span class="badge live">Live</span></div>
-          <div class="proj-meta"><a href="https://axiondeepdigital.com/free-seo-audit">axiondeepdigital.com/free-seo-audit</a></div>
-        </div>
-        <div class="proj-desc">Browser-rendering SEO &amp; website audit platform: <strong>60+ checks across 9 categories</strong> (technical, content, on-page, schema, security, performance, accessibility, AI-readiness, local SEO).</div>
-        <ul>
-          <li>Renders pages the way Googlebot does (AWS Lambda + Node.js 20 + Puppeteer/Chromium) rather than parsing static HTML, surfacing issues source-only tools miss</li>
-          <li>Integrates PageSpeed Insights/Lighthouse, the W3C validator, Mozilla Observatory, and SERP data into a single prioritized, exportable report</li>
-          <li>Ecosystem: a companion GPT on the OpenAI store and a published Zapier integration</li>
-        </ul>
-        <div class="tags"><span class="tag">AWS Lambda</span><span class="tag">Node.js</span><span class="tag">Puppeteer</span><span class="tag">DynamoDB</span><span class="tag">LLM APIs</span><span class="tag">SAM / IaC</span></div>
       </div>
     </section>
 
     <!-- ── AI & Agentic Systems ── -->
     <section>
       <h2>AI &amp; Agentic Systems</h2>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Vesper / Vesper-Hydra <span class="badge prod">Built</span></div>
-          <div class="proj-meta">dual-agent security platform</div>
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">Vesper / Vesper-Hydra <span class="badge prod">Built</span></div>
+            <div class="proj-meta">dual-agent security platform</div>
+          </div>
+          <div class="proj-desc">Autonomous multi-vector cybersecurity analysis platform for authorized testing: a <strong>12K+ LOC dual-agent system</strong> with an Operator agent that executes and an Analyst agent that reviews, updates shared state, and steers next-turn strategy.</div>
+          <ul>
+            <li>Per-agent context scoping to control token cost and prevent behavior drift; strict Pydantic output schemas at every LLM boundary with schema-repair retries</li>
+            <li>PyQt6 desktop client + FastAPI backend, Docker-deployed; persistent memory store across runs</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Multi-agent</span><span class="tag">FastAPI</span><span class="tag">PyQt6</span><span class="tag">Pydantic</span><span class="tag">Docker</span></div>
         </div>
-        <div class="proj-desc">Autonomous multi-vector cybersecurity analysis platform for authorized testing: a <strong>12K+ LOC dual-agent system</strong> with an Operator agent that executes and an Analyst agent that reviews, updates shared state, and steers next-turn strategy.</div>
-        <ul>
-          <li>Per-agent context scoping to control token cost and prevent behavior drift; strict Pydantic output schemas at every LLM boundary with schema-repair retries</li>
-          <li>PyQt6 desktop client + FastAPI backend, Docker-deployed; persistent memory store across runs</li>
-        </ul>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Multi-agent</span><span class="tag">FastAPI</span><span class="tag">PyQt6</span><span class="tag">Pydantic</span><span class="tag">Docker</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Axion AI Chat <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">AI-first live chat</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Axion AI Chat <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">AI-first live chat</div>
+          </div>
+          <div class="proj-desc">AI-first customer communication platform: an embeddable chat widget where the AI answers when you can't and a human takes over when you can, managed through a mobile app with real-time notifications.</div>
+          <div class="tags"><span class="tag">AI</span><span class="tag">Realtime</span><span class="tag">Widget SDK</span><span class="tag">Mobile</span></div>
         </div>
-        <div class="proj-desc">AI-first customer communication platform: an embeddable chat widget where the AI answers when you can't and a human takes over when you can, managed through a mobile app with real-time notifications.</div>
-        <div class="tags"><span class="tag">AI</span><span class="tag">Realtime</span><span class="tag">Widget SDK</span><span class="tag">Mobile</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Parsonic <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">AI visual web scraper</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Parsonic <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">AI visual web scraper</div>
+          </div>
+          <div class="proj-desc">AI-powered visual web scraper: point, click, and let AI handle extraction, structure inference, and pipeline generation.</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Scraping</span><span class="tag">Automation</span></div>
         </div>
-        <div class="proj-desc">AI-powered visual web scraper: point, click, and let AI handle extraction, structure inference, and pipeline generation.</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">Scraping</span><span class="tag">Automation</span></div>
+
       </div>
     </section>
 
     <!-- ── Platforms, Tools & Simulation ── -->
     <section>
       <h2>Platforms, Tools &amp; Simulation</h2>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Forma <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">full-stack React platform</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Forma <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">full-stack React platform</div>
+          </div>
+          <div class="proj-desc">A full-stack React application platform: build, deploy, and scale React apps with visual tools and instant backends.</div>
+          <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">DevTools</span></div>
         </div>
-        <div class="proj-desc">A full-stack React application platform: build, deploy, and scale React apps with visual tools and instant backends.</div>
-        <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Platform</span><span class="tag">DevTools</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">SEO Workbench <span class="badge prod">Built</span></div>
-          <div class="proj-meta">local-first SEO command center</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Quantum Gallery (JRG_ARC) <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">AI-orchestrated 3D framework</div>
+          </div>
+          <div class="proj-desc">A modular research and visualization environment for dynamic, AI-driven 3D scenes: interactive entities, procedural animation, and live data orchestration.</div>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">React Three Fiber</span><span class="tag">WebGL</span><span class="tag">Vite</span></div>
         </div>
-        <div class="proj-desc">A local-first, multi-project SEO command center that encodes a full SEO process into one workstation tool, powered by free Google APIs, with no SaaS subscription or telemetry.</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Google APIs</span><span class="tag">Desktop</span><span class="tag">SEO</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Quantum Gallery (JRG_ARC) <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">AI-orchestrated 3D framework</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">QUANTA <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">quantum education platform</div>
+          </div>
+          <div class="proj-desc">Interactive quantum-computing education platform that turns abstract quantum mechanics into visual, explorable simulations with a structured curriculum and hands-on exercises.</div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Simulation</span><span class="tag">Quantum</span><span class="tag">EdTech</span></div>
         </div>
-        <div class="proj-desc">A modular research and visualization environment for dynamic, AI-driven 3D scenes: interactive entities, procedural animation, and live data orchestration.</div>
-        <div class="tags"><span class="tag">TypeScript</span><span class="tag">React Three Fiber</span><span class="tag">WebGL</span><span class="tag">Vite</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">QUANTA <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">quantum education platform</div>
-        </div>
-        <div class="proj-desc">Interactive quantum-computing education platform that turns abstract quantum mechanics into visual, explorable simulations with a structured curriculum and hands-on exercises.</div>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Simulation</span><span class="tag">Quantum</span><span class="tag">EdTech</span></div>
       </div>
     </section>
 
@@ -340,106 +445,97 @@
     <section>
       <h2>Applied Research &mdash; Axion Deep Labs R&amp;D</h2>
       <p class="section-note">Continual learning, model topology, and AI-system measurement. Public methodology + code; one preprint published.</p>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">PERSIST <span class="badge research">Preprint</span></div>
-          <div class="proj-meta">topology-based forgetting prediction</div>
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">PERSIST <span class="badge research">Preprint</span></div>
+            <div class="proj-meta">topology-based forgetting prediction</div>
+          </div>
+          <div class="proj-desc">A 57-experiment study (19 architectures &times; 3 datasets) applying persistent homology to loss-landscape cross-sections to predict catastrophic forgetting. Key result: H0 fragmentation predicts EWC regularization benefit (&rho; = 0.76 to 0.86).</div>
+          <ul>
+            <li>Rigorous stats: LOAO ridge regression, permutation tests, clustered bootstrap, Bonferroni correction; ImageNet-100 scale validation on A100 HPC</li>
+            <li>Preprint published on SSRN; NSF SBIR Phase I application ($275K) in progress</li>
+          </ul>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Persistent Homology</span><span class="tag">Continual Learning</span><span class="tag">HPC / SLURM</span></div>
         </div>
-        <div class="proj-desc">A 57-experiment study (19 architectures &times; 3 datasets) applying persistent homology to loss-landscape cross-sections to predict catastrophic forgetting. Key result: H0 fragmentation predicts EWC regularization benefit (&rho; = 0.76 to 0.86).</div>
-        <ul>
-          <li>Rigorous stats: LOAO ridge regression, permutation tests, clustered bootstrap, Bonferroni correction; ImageNet-100 scale validation on A100 HPC</li>
-          <li>Preprint published on SSRN; NSF SBIR Phase I application ($275K) in progress</li>
-        </ul>
-        <div class="tags"><span class="tag">PyTorch</span><span class="tag">Persistent Homology</span><span class="tag">Continual Learning</span><span class="tag">HPC / SLURM</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">AI Crawler Diff <span class="badge research">Methodology</span></div>
-          <div class="proj-meta">content-divergence study</div>
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">SDI / GENESIS / PHI / DRIFT <span class="badge research">Research</span></div>
+            <div class="proj-meta">model-structure research line</div>
+          </div>
+          <div class="proj-desc">A cluster of open research repos probing structure-to-behavior relationships in neural and quantum systems:</div>
+          <ul>
+            <li><strong>SDI</strong> — Structural Divergence Index: predicting fine-tuning degradation from model structure</li>
+            <li><strong>GENESIS</strong> — information-capacity scaling laws (testing a Bekenstein-bound analog)</li>
+            <li><strong>PHI</strong> — systematic survey of integrated information (Phi*) across architecture families</li>
+            <li><strong>DRIFT</strong> — quantum-circuit stability under operator ordering and gate diversity</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Information Theory</span><span class="tag">Quantum</span></div>
         </div>
-        <div class="proj-desc">Pre-registered methodology and dataset comparing what 8 request profiles (AI crawlers, Googlebot, normal browsers) receive from the same URLs: what changes, how often, and whether it matters.</div>
-        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Pre-registration</span><span class="tag">Crawling</span><span class="tag">Measurement</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">SDI / GENESIS / PHI / DRIFT <span class="badge research">Research</span></div>
-          <div class="proj-meta">model-structure research line</div>
-        </div>
-        <div class="proj-desc">A cluster of open research repos probing structure-to-behavior relationships in neural and quantum systems:</div>
-        <ul>
-          <li><strong>SDI</strong> — Structural Divergence Index: predicting fine-tuning degradation from model structure</li>
-          <li><strong>GENESIS</strong> — information-capacity scaling laws (testing a Bekenstein-bound analog)</li>
-          <li><strong>PHI</strong> — systematic survey of integrated information (Phi*) across architecture families</li>
-          <li><strong>DRIFT</strong> — quantum-circuit stability under operator ordering and gate diversity</li>
-        </ul>
-        <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Information Theory</span><span class="tag">Quantum</span></div>
       </div>
     </section>
 
     <!-- ── Web, Brand & Demos ── -->
     <section>
-      <h2>Web, Brand &amp; Client Demos</h2>
+      <h2>Web &amp; Client Demos</h2>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">axiondeep.com &amp; axiondeepdigital.com <span class="badge live">Live</span></div>
-          <div class="proj-meta">brand + agency sites</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Axion Gate Systems <span class="badge demo">Demo</span></div>
+            <div class="proj-meta">HOA access-management</div>
+          </div>
+          <div class="proj-desc">Functional proof-of-workflow for an HOA gate access-management product (license-plate recognition) under subsidiary Axion Gate Systems LLC: simulated gate command with manual override, runs locally to remove demo-day hosting risk.</div>
+          <div class="tags"><span class="tag">React</span><span class="tag">LPR / Vision</span><span class="tag">Workflow</span></div>
         </div>
-        <div class="proj-desc">Marketing sites for Axion Deep Labs (the parent studio) and Axion Deep Digital (the SEO/web agency), built for performance and search: Next.js + TypeScript, static export, 98+ Lighthouse, JSON-LD, full technical SEO.</div>
-        <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">SEO</span><span class="tag">Core Web Vitals</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Axion Gate Systems <span class="badge demo">Demo</span></div>
-          <div class="proj-meta">HOA access-management</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Restaurant Demos (3) <span class="badge demo">Demo</span></div>
+            <div class="proj-meta">portfolio + barter</div>
+          </div>
+          <div class="proj-desc">Three hand-built restaurant sites (Bobbea's, Pastaggio's, Umo BBQ) used as portfolio pieces and catering-barter pitches: clean static HTML/CSS, mobile-first.</div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
         </div>
-        <div class="proj-desc">Functional proof-of-workflow for an HOA gate access-management product (license-plate recognition) under subsidiary Axion Gate Systems LLC: simulated gate command with manual override, runs locally to remove demo-day hosting risk.</div>
-        <div class="tags"><span class="tag">React</span><span class="tag">LPR / Vision</span><span class="tag">Workflow</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Restaurant Demos (3) <span class="badge demo">Demo</span></div>
-          <div class="proj-meta">portfolio + barter</div>
-        </div>
-        <div class="proj-desc">Three hand-built restaurant sites (Bobbea's, Pastaggio's, Umo BBQ) used as portfolio pieces and catering-barter pitches: clean static HTML/CSS, mobile-first.</div>
-        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
       </div>
     </section>
 
     <!-- ── Games & Interactive ── -->
     <section>
       <h2>Games &amp; Interactive</h2>
+      <div class="grid">
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Runemaul: Legacy of the Duke <span class="badge wip">In progress</span></div>
-          <div class="proj-meta">Unity / C#</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Runemaul: Legacy of the Duke <span class="badge wip">In progress</span></div>
+            <div class="proj-meta">Unity / C#</div>
+          </div>
+          <div class="proj-desc">Real-time, hero-based tower defense: shape enemy paths, defend Runemaul, and uncover the legacy. Built in Unity with C#.</div>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Game Design</span></div>
         </div>
-        <div class="proj-desc">Real-time, hero-based tower defense: shape enemy paths, defend Runemaul, and uncover the legacy. Built in Unity with C#.</div>
-        <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Game Design</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Imitation: A Turing Test <span class="badge demo">Game Jam</span></div>
-          <div class="proj-meta">DEV June Solstice Jam 2026</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Imitation: A Turing Test <span class="badge demo">Game Jam</span></div>
+            <div class="proj-meta">DEV June Solstice Jam 2026</div>
+          </div>
+          <div class="proj-desc">A Turing-test game in memory of Alan Turing: three terminals, two human personas and one machine; question them, then name the machine. Hand-authored personas vs. an LLM imposter.</div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">LLM</span><span class="tag">Narrative</span></div>
         </div>
-        <div class="proj-desc">A Turing-test game in memory of Alan Turing: three terminals, two human personas and one machine; question them, then name the machine. Hand-authored personas vs. an LLM imposter.</div>
-        <div class="tags"><span class="tag">JavaScript</span><span class="tag">LLM</span><span class="tag">Narrative</span></div>
-      </div>
 
-      <div class="project">
-        <div class="proj-head">
-          <div class="proj-name">Showcase VR <span class="badge wip">Prototype</span></div>
-          <div class="proj-meta">C# / VR</div>
+        <div class="project">
+          <div class="proj-head">
+            <div class="proj-name">Showcase VR <span class="badge wip">Prototype</span></div>
+            <div class="proj-meta">C# / VR</div>
+          </div>
+          <div class="proj-desc">Immersive VR product-showcase app: virtual showrooms and interactive 3D models for exploring products with realism across industries.</div>
+          <div class="tags"><span class="tag">C#</span><span class="tag">VR</span><span class="tag">3D</span></div>
         </div>
-        <div class="proj-desc">Immersive VR product-showcase app: virtual showrooms and interactive 3D models for exploring products with realism across industries.</div>
-        <div class="tags"><span class="tag">C#</span><span class="tag">VR</span><span class="tag">3D</span></div>
+
       </div>
     </section>
 
@@ -447,16 +543,24 @@
     <section>
       <h2>Engineering Foundations</h2>
       <p class="section-note">A large public catalog of coursework and exercises backs the products above with CS fundamentals across many languages and domains.</p>
-      <ul>
-        <li><strong>Data structures &amp; algorithms</strong> (Java): custom linked lists, generic bag/queue, postfix calculator, sorting, recursion</li>
-        <li><strong>Systems, memory &amp; concurrency</strong> (C++ / Java): dynamic memory management, file processors, multithreaded counting with synchronization primitives</li>
-        <li><strong>Computer graphics</strong> (WebGL / OpenGL): Painter's algorithm, Sierpinski gasket, recursively-subdivided sphere, colored/rotating cubes, shader pipelines</li>
-        <li><strong>Android development</strong> (Kotlin): to-do with SQLite, photo gallery, unit converter with tests, gamified chores organizer</li>
-        <li><strong>Languages used across the catalog:</strong> Python, TypeScript/JavaScript, Java, C++, C#, Kotlin, PHP, SQL</li>
-      </ul>
-      <div class="edu-row" style="margin-top:8px;"><strong>BS, Computer Science</strong> &mdash; Colorado State University, Fort Collins, CO (2025)</div>
-      <div class="edu-row"><strong>MS, AI and Data Science</strong> &mdash; Colorado State University Global (In Progress, Expected 2026)</div>
+      <div class="grid">
+        <div class="project full">
+          <ul>
+            <li><strong>Data structures &amp; algorithms</strong> (Java): custom linked lists, generic bag/queue, postfix calculator, sorting, recursion</li>
+            <li><strong>Systems, memory &amp; concurrency</strong> (C++ / Java): dynamic memory management, file processors, multithreaded counting with synchronization primitives</li>
+            <li><strong>Computer graphics</strong> (WebGL / OpenGL): Painter's algorithm, Sierpinski gasket, recursively-subdivided sphere, colored/rotating cubes, shader pipelines</li>
+            <li><strong>Android development</strong> (Kotlin): to-do with SQLite, photo gallery, unit converter with tests, gamified chores organizer</li>
+            <li><strong>Languages used across the catalog:</strong> Python, TypeScript/JavaScript, Java, C++, C#, Kotlin, PHP, SQL</li>
+          </ul>
+          <div class="edu-row" style="margin-top:12px;"><strong>BS, Computer Science</strong> &mdash; Colorado State University, Fort Collins, CO (2025)</div>
+          <div class="edu-row"><strong>MS, AI and Data Science</strong> &mdash; Colorado State University Global (In Progress, Expected 2026)</div>
+        </div>
+      </div>
     </section>
+
+    <footer>
+      &copy; Joshua Gutierrez &middot; Axion Deep Digital &middot; <a href="https://axiondeepdigital.com">axiondeepdigital.com</a>
+    </footer>
 
   </main>
 </body>
