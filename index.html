@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joshua Gutierrez — Portfolio</title>
+<title>Joshua Gutierrez: Portfolio</title>
 <style>
   :root {
     --bg:     #f3ede3;   /* warm cream backdrop */
@@ -266,7 +266,7 @@
     <!-- ── Hero ── -->
     <header class="hero">
       <h1 class="name">Joshua Gutierrez</h1>
-      <p class="tagline">Portfolio &middot; SEO &amp; Web Performance &middot; Product Engineering &amp; Applied Research</p>
+      <p class="tagline">Portfolio &middot; AI &amp; ML Research &middot; Search Quality &amp; Web Performance &middot; Product Engineering</p>
       <p class="contact">
         Las Cruces, NM
         <span class="dot">&bull;</span>
@@ -278,11 +278,92 @@
         <span class="dot">&bull;</span>
         <a href="https://github.com/joshuarg007">github.com/joshuarg007</a>
       </p>
-      <p class="intro">Founder of <strong>Axion Deep Digital</strong> (SEO &amp; web agency) and <strong>Axion Deep Labs</strong> (independent software studio). I lead SEO and web-performance work end to end &mdash; technical SEO, content strategy, Core Web Vitals, and the tooling behind it &mdash; and I design, build, ship, and operate the products that support it: production SaaS, AI and agentic systems, developer tooling, and applied ML research. The work below leads with SEO and web performance, then spans live commercial products, in-house platforms, and a research track in continual learning and model topology. Everything is built and maintained solo or as the technical lead, across the full stack and the full lifecycle.</p>
+      <p class="intro">Research and engineering lead at <strong>Axion Deep Labs</strong> (independent software studio) and <strong>Axion Deep Digital</strong> (search and web consultancy). I run pre-registered studies in continual learning, in-context learning and model topology, and I design, build and operate the production systems alongside them: SaaS, AI and agentic tooling, and browser-rendering audit platforms. The work below leads with the research, then the search and web-performance practice, then live commercial products. Everything is built and maintained solo or as the technical lead, across the full stack and the full lifecycle. Where a study did not support its hypothesis, it says so.</p>
     </header>
 
-    <!-- ── SEO & Web Performance (lead) ── -->
+    <!-- ── AI & ML Research (lead) ── -->
     <section class="lead-section">
+      <h2>AI &amp; Machine Learning Research</h2>
+      <p class="section-note">Pre-registered studies with published methodology, open code, and results reported whether or not they supported the hypothesis.</p>
+      <div class="grid">
+
+        <div class="project feature full">
+          <div class="proj-head">
+            <div class="proj-name">PERSIST <span class="badge research">Research</span></div>
+            <div class="proj-meta">topology-based prediction of catastrophic forgetting</div>
+          </div>
+          <div class="proj-desc">A <strong>57-configuration study</strong> (19 architectures across 3 datasets) applying persistent homology to loss-landscape cross-sections to predict how much a model will forget, and how much regularization will help.</div>
+          <ul>
+            <li>Key result: H0 fragmentation predicts EWC benefit, &rho; = 0.86 on RESISC-45 and 0.76 on CIFAR-100, and replicates on 2 of 3 datasets. The third, CUB-200, does not reach significance and is reported as such</li>
+            <li>Statistics stated with their limits: leave-one-architecture-out ridge regression, permutation tests, clustered bootstrap, Bonferroni correction. Borderline p-values are labelled borderline, and the EWC-benefit finding is flagged as exploratory rather than pre-registered</li>
+            <li>Scale validation on ImageNet-100 across 8 configurations on A100 HPC, where H1 rather than H0 becomes dominant (&rho; = 0.93)</li>
+            <li>Code public under MIT; preprint in preparation</li>
+          </ul>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Persistent Homology</span><span class="tag">Continual Learning</span><span class="tag">HPC / SLURM</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">EMERGE <span class="badge research">Pre-registered</span></div>
+            <div class="proj-meta">when in-context learning emerges</div>
+          </div>
+          <div class="proj-desc">Open study of the task-diversity threshold at which in-context learning appears in from-scratch transformers, using in-context noisy linear regression with exact closed-form baselines for in-weights and in-context behavior.</div>
+          <ul>
+            <li>Research plan pre-registered and frozen before data collection; every deviation recorded as a written amendment rather than a silent edit</li>
+            <li>Phase 0 pilot complete at 28/28 cells. Phase 0B measure validation passed all five pre-set criteria, but only after a failed first run exposed a wrong premise in one criterion, which was diagnosed and amended in public</li>
+            <li>Built for zero legal exposure by design: synthetic data from seeded RNGs, models trained from scratch, no third-party weights or datasets, MIT from the first commit</li>
+          </ul>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">In-Context Learning</span><span class="tag">Pre-registration</span><span class="tag">Open Source</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">Topological Dynamics of Grokking <span class="badge research">Pilot complete</span></div>
+            <div class="proj-meta">early-warning signals for delayed generalization</div>
+          </div>
+          <div class="proj-desc">Does the persistent homology of loss-landscape slices give an early-warning signal before a model groks? A 1-layer transformer on modular addition, 100K steps, with the endpoint hierarchy fixed in advance.</div>
+          <ul>
+            <li><strong>Outcome: mixed, and reported as mixed.</strong> The pre-registered primary endpoint came out negative. Two secondary measures and the comparator came out positive. With only three pre-onset windows the result is inconclusive either way</li>
+            <li>Conclusion recorded as "motivates a larger study", not as a finding, and the endpoint hierarchy was frozen rather than promoting a secondary measure to primary after seeing the data</li>
+            <li>Two measurement bugs found and fixed during the work, including one where a statistic turned out to be a structural constant rather than a signal</li>
+          </ul>
+          <div class="tags"><span class="tag">Transformers</span><span class="tag">Topological Data Analysis</span><span class="tag">Grokking</span><span class="tag">Experiment Design</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">AI Search Visibility &amp; Readiness Studies <span class="badge research">Published</span></div>
+            <div class="proj-meta">how machines read the public web</div>
+          </div>
+          <div class="proj-desc">Field studies measuring what AI crawlers and answer engines can actually see on real business websites, with open datasets.</div>
+          <ul>
+            <li><strong>n=368</strong> AI search visibility study, published to SSRN with an open dataset (CC BY 4.0): roughly 25% of sites serve answer-critical content that non-rendering crawlers never receive</li>
+            <li><strong>1,629 crawled / 1,261 reachable</strong> AI-readiness study, pre-registered on OSF, with headline figures replicated across four waves to within about two points</li>
+            <li><strong>292-domain</strong> technical and accessibility study; every statistic reported against its own denominator rather than the study-level total</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Study Design</span><span class="tag">Open Data</span><span class="tag">Web Crawling</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
+            <div class="proj-name">SDI / GENESIS / PHI / DRIFT <span class="badge research">Research</span></div>
+            <div class="proj-meta">model-structure research line</div>
+          </div>
+          <div class="proj-desc">A cluster of open research repos probing structure-to-behavior relationships in neural and quantum systems:</div>
+          <ul>
+            <li><strong>SDI</strong>, Structural Divergence Index: predicting fine-tuning degradation from model structure</li>
+            <li><strong>GENESIS</strong>, information-capacity scaling laws, testing a Bekenstein-bound analog</li>
+            <li><strong>PHI</strong>, systematic survey of integrated information across architecture families</li>
+            <li><strong>DRIFT</strong>, quantum-circuit stability under operator ordering and gate diversity</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Information Theory</span><span class="tag">Quantum</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SEO & Web Performance ── -->
+    <section>
       <h2>SEO &amp; Web Performance</h2>
       <p class="section-note">Technical SEO, content strategy, Core Web Vitals, and the audit tooling and research behind the work.</p>
       <div class="grid">
@@ -333,7 +414,7 @@
 
     <!-- ── Flagship Products ── -->
     <section>
-      <h2>Flagship Products &mdash; Live SaaS</h2>
+      <h2>Flagship Products: Live SaaS</h2>
       <div class="grid">
 
         <div class="project">
@@ -441,43 +522,6 @@
       </div>
     </section>
 
-    <!-- ── Applied Research ── -->
-    <section>
-      <h2>Applied Research &mdash; Axion Deep Labs R&amp;D</h2>
-      <p class="section-note">Continual learning, model topology, and AI-system measurement. Public methodology + code; one preprint published.</p>
-      <div class="grid">
-
-        <div class="project full">
-          <div class="proj-head">
-            <div class="proj-name">PERSIST <span class="badge research">Preprint</span></div>
-            <div class="proj-meta">topology-based forgetting prediction</div>
-          </div>
-          <div class="proj-desc">A 57-experiment study (19 architectures &times; 3 datasets) applying persistent homology to loss-landscape cross-sections to predict catastrophic forgetting. Key result: H0 fragmentation predicts EWC regularization benefit (&rho; = 0.76 to 0.86).</div>
-          <ul>
-            <li>Rigorous stats: LOAO ridge regression, permutation tests, clustered bootstrap, Bonferroni correction; ImageNet-100 scale validation on A100 HPC</li>
-            <li>Preprint published on SSRN; NSF SBIR Phase I application ($275K) in progress</li>
-          </ul>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Persistent Homology</span><span class="tag">Continual Learning</span><span class="tag">HPC / SLURM</span></div>
-        </div>
-
-        <div class="project full">
-          <div class="proj-head">
-            <div class="proj-name">SDI / GENESIS / PHI / DRIFT <span class="badge research">Research</span></div>
-            <div class="proj-meta">model-structure research line</div>
-          </div>
-          <div class="proj-desc">A cluster of open research repos probing structure-to-behavior relationships in neural and quantum systems:</div>
-          <ul>
-            <li><strong>SDI</strong> — Structural Divergence Index: predicting fine-tuning degradation from model structure</li>
-            <li><strong>GENESIS</strong> — information-capacity scaling laws (testing a Bekenstein-bound analog)</li>
-            <li><strong>PHI</strong> — systematic survey of integrated information (Phi*) across architecture families</li>
-            <li><strong>DRIFT</strong> — quantum-circuit stability under operator ordering and gate diversity</li>
-          </ul>
-          <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Information Theory</span><span class="tag">Quantum</span></div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- ── Web, Brand & Demos ── -->
     <section>
       <h2>Web &amp; Client Demos</h2>
@@ -552,8 +596,8 @@
             <li><strong>Android development</strong> (Kotlin): to-do with SQLite, photo gallery, unit converter with tests, gamified chores organizer</li>
             <li><strong>Languages used across the catalog:</strong> Python, TypeScript/JavaScript, Java, C++, C#, Kotlin, PHP, SQL</li>
           </ul>
-          <div class="edu-row" style="margin-top:12px;"><strong>BS, Computer Science</strong> &mdash; Colorado State University, Fort Collins, CO (2025)</div>
-          <div class="edu-row"><strong>MS, AI and Data Science</strong> &mdash; Colorado State University Global (In Progress, Expected 2026)</div>
+          <div class="edu-row" style="margin-top:12px;"><strong>BS, Computer Science</strong>, Colorado State University, Fort Collins, CO (2021 - May 2025)</div>
+          <div class="edu-row"><strong>MS, AI and Data Science</strong>, Colorado State University Global, Aurora, CO (2025 - 2026, Expected December)</div>
         </div>
       </div>
     </section>
