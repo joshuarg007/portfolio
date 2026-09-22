@@ -455,6 +455,20 @@
 
         <div class="project full">
           <div class="proj-head">
+            <div class="proj-name">JudgeStack <span class="badge prod">Built</span></div>
+            <div class="proj-meta">retrieval agent with a held-out, blind-graded evaluation</div>
+          </div>
+          <div class="proj-desc">A Magic: The Gathering rules agent built on <strong>Sanity Context MCP</strong> that reconstructs the authority chain behind an answer rather than just producing one, and names the evidence it could not retrieve. Entry for the DEV x Sanity Challenge.</div>
+          <ul>
+            <li>Ten questions held out and never run during development. Two evidence-gathering architectures on the same model and prompt, graded blind by a third-party model given no condition labels: <strong>verdict accuracy 1/10 to 9/10</strong>, unsupported reasoning 7/10 down to 1/10</li>
+            <li>Content modelled across ten document types so the governing authority depends on the question asked: current Oracle wording, an older printing, a rule paragraph, or a dated format announcement</li>
+            <li>Withdrew a favourable 10/10 metric of my own after auditing it and finding it unsound; published the failure case and the schema defect the evaluation exposed</li>
+          </ul>
+          <div class="tags"><span class="tag">Sanity Context</span><span class="tag">MCP</span><span class="tag">TypeScript</span><span class="tag">GROQ</span><span class="tag">Next.js</span><span class="tag">Evaluation design</span></div>
+        </div>
+
+        <div class="project full">
+          <div class="proj-head">
             <div class="proj-name">Vesper / Vesper-Hydra <span class="badge prod">Built</span></div>
             <div class="proj-meta">dual-agent security platform</div>
           </div>
